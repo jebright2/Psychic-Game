@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Psychic-Game</title>
+</head>
+<link rel="stylesheet" href="style.css">
+<body>
+	<img src="https://render.fineartamerica.com/images/rendered/default/print/8.000/5.875/break/images/artworkimages/medium/1/9-hands-on-crystal-ball-and-cryptocurrency-allan-swart.jpg" alt="Crystal Ball">
+	
+	<div id="game">
+		<h1> The Psychic Game </h1>
+		<h2>Guess what letter I'm thinking of:</h2>
+		<p>Wins:</p>
+		<p>Losses:</p>
+		<p>Guesses Left:</p>
+		<p>Your Guesses so far:</p>
+	</div>
+
+	<script type="text/javascript">
+		
+		 var computerChoice = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+
+		 var wins = 0;
+		 var losses = 0;
+		 var numGuesses = 9;
+		 var userInput = [];
+
+		 document.onkeyup = function(event) {
+
+		 	var userGuess = event.key;
+
+		 	var computerGuess = computerChoice[Math.floor(Math.random() * computerChoice.length)];
+
+		 	var letterOptions = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+		 	
+
+			if (letterOptions.indexOf(userGuess) > -1) {
+
+				if (userGuess === computerGuess) {
+					wins++;
+					alert("Well, I guess you read my mind. Good Job!")
+					numGuesses = 9;
+					userInput = [];
+				}
+
+				if (userGuess != computerGuess) {
+					numGuesses --;
+					userInput.push(userGuess);
+				}
+
+				if (numGuesses === 0) {
+
+				numGuesses = 9;
+				alert("Guess you're not psychic, try again!");
+				alert("The letter was" + " " + computerGuess.toUpperCase());
+				losses ++;
+				userInput = [];
+				
+				
+			}
+
+			var html = 
+			"<h1> The Psychic Game </h1>" +
+			"<h3>Guess what letter I'm thinking of:</h3>" +
+			"<p>Wins: " + wins + "</p>" +
+			"<p>Losses: " + losses + "</p>" +
+			"<p>Guesses Left: " + numGuesses + "</p>" +
+			"<p>Your Guesses so far: " + userInput.join(", ") + "</p>";
+
+			document.querySelector("#game").innerHTML = html;
+
+			
+			}
+		};
+
+	</script>
+
+</body>
+</html>
