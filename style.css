@@ -3,7 +3,7 @@ body {
     color: white;
     background-color:  rgb(218, 37, 218);
     font-size: 20px;
-    background-image: url('images/space.jpg');
+    background-image: url("images/space.jpg");
     font-family: 'Bitter', serif;
 }
 
